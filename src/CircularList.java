@@ -1,10 +1,7 @@
-import java.util.logging.Logger;
-
 public class CircularList {
     private Auxiliar start = null;
     private Auxiliar end = null;
 
-    private static final Logger LOGGER = Logger.getLogger( CircularList.class.getName() );
 
     public void push(int value) {
         Auxiliar auxiliar = new Auxiliar(value);
@@ -16,6 +13,7 @@ public class CircularList {
 
         end = auxiliar;
         end.netAux = start;
+        System.out.println("O valor " + value + " foi adicionado");
     }
 
     public void remove(int valueToRemove) {
@@ -39,15 +37,18 @@ public class CircularList {
         }
     }
 
-    public void print() {
+    public String print() {
+        StringBuilder str = new StringBuilder();
         Auxiliar auxiliar = start;
-
         if (start != null) {
             do {
-                LOGGER.info(auxiliar.value + " ");
-                auxiliar = auxiliar.netAux;
+                str.append("[" + auxiliar.value + ", ");
             } while (auxiliar != start);
+            auxiliar = auxiliar.netAux;
+            str.append(auxiliar.value).append("]");
         }
+        System.out.println(str);
+        return str.toString();
     }
 
     public boolean contains(int searchValue) {
@@ -55,13 +56,13 @@ public class CircularList {
         if (start != null) {
             do {
                 if (currentAux.value == searchValue) {
-                    System.out.println(true);
+                    System.out.println("O valor " + searchValue + " está contido na lista!");
                     return true;
                 }
                 currentAux = currentAux.netAux;
             } while (currentAux != start);
         }
-        System.out.println(false);
+        System.out.println("O valor " + searchValue + " não está contido na lista!");
         return false;
     }
 
