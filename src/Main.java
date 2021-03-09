@@ -5,8 +5,9 @@ public class Main {
         circularList.push(60);
         circularList.push(66);
         circularList.push(63);
+        circularList.contains(63);
         circularList.remove(63);
-        circularList.contains(60);
+        circularList.contains(63);
         circularList.print();
 
     }

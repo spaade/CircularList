@@ -5,4 +5,4 @@ public class Auxiliar {
     public Auxiliar(int value) {
         this.value = value;
     }
- }
+}
